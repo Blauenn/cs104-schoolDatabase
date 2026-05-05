@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Students - School Database</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+</head>
+
+<body>
+	<div class="layout">
+		<div class="sidebar">
+			<!-- sidebar content -->
+			<a href="/" style="margin-bottom: 2vh;">Index</a>
+			<a href="/students">Students</a>
+			<a href="/teachers">Teachers</a>
+			<a href="/classes">Classes</a>
+			<a href="/subjects">Subjects</a>
+			<a href="/enrollments">Enrollments</a>
+		</div>
+
+		<div class="main">
+			<h1>Students</h1>
+			<p class="subtitle">Edit information</p>
+
+			<div>
+				<table class="information-table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Class ID</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Example row -->
+						<tr>
+							<td>1</td>
+							<td>John</td>
+							<td>Doe</td>
+							<td>john@example.com</td>
+							<td>0123456789</td>
+							<td>101</td>
+							<td>
+								<button>Edit</button>
+								<button>Delete</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- Add Student Modal -->
+	<div id="addStudentModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Add New Student</h2>
+				<span class="close">&times;</span>
+			</div>
+			<form id="addStudentForm" class="modal-body">
+				<div class="form-group">
+					<label for="firstName">First Name:</label>
+					<input type="text" id="firstName" name="firstName" required>
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name:</label>
+					<input type="text" id="lastName" name="lastName" required>
+				</div>
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="phone">Phone:</label>
+					<input type="tel" id="phone" name="phone" required>
+				</div>
+				<div class="form-group">
+					<label for="classId">Class:</label>
+					<select id="classId" name="classId">
+						<option value="">-- Select a Class --</option>
+					</select>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="cancelBtn" class="btn-secondary">Cancel</button>
+					<button type="submit" class="btn">Add Student</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="{{ url_for('static', filename='js/students.js') }}"></script>
+</body>
+
+</html>

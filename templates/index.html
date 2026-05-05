@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>School Database - Home</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+	<div class="layout">
+		<div class="sidebar">
+			<!-- sidebar content -->
+			<a href="/" style="margin-bottom: 2vh;">Index</a>
+			<a href="/students">Students</a>
+			<a href="/teachers">Teachers</a>
+			<a href="/classes">Classes</a>
+			<a href="/subjects">Subjects</a>
+			<a href="/enrollments">Enrollments</a>
+		</div>
+
+		<div class="main">
+			<h1>School Database Management</h1>
+			<p class="subtitle">Select a section to manage</p>
+		</div>
+	</div>
+
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

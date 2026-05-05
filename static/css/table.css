@@ -1,0 +1,21 @@
+.information-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+}
+
+.information-table th,
+.information-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.information-table th {
+    background: #000000;
+    color: white;
+}
+
+.information-table tr:hover {
+    background: #f5f5f5;
+}

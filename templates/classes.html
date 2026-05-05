@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Classes - School Database</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+	<div class="layout">
+		<div class="sidebar">
+			<!-- sidebar content -->
+			<a href="/" style="margin-bottom: 2vh;">Index</a>
+			<a href="/students">Students</a>
+			<a href="/teachers">Teachers</a>
+			<a href="/classes">Classes</a>
+			<a href="/subjects">Subjects</a>
+			<a href="/enrollments">Enrollments</a>
+		</div>
+
+		<div class="main">
+			<h1>Classes</h1>
+			<p class="subtitle">Edit information</p>
+		</div>
+	</div>
+
+	<!-- Add Class Modal -->
+	<div id="addClassModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Add New Class</h2>
+				<span class="close">&times;</span>
+			</div>
+			<form id="addClassForm" class="modal-body">
+				<div class="form-group">
+					<label for="className">Class Name:</label>
+					<input type="text" id="className" name="className" required>
+				</div>
+				<div class="form-group">
+					<label for="major">Major:</label>
+					<input type="text" id="major" name="major" required>
+				</div>
+				<div class="form-group">
+					<label for="department">Department:</label>
+					<input type="text" id="department" name="department" required>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="cancelBtn" class="btn-secondary">Cancel</button>
+					<button type="submit" class="btn">Add Class</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="{{ url_for('static', filename='js/classes.js') }}"></script>
+</body>
+
+</html>
