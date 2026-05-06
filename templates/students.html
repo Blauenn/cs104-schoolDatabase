@@ -22,8 +22,10 @@
 		</div>
 
 		<div class="main">
-			<h1>Students</h1>
-			<p class="subtitle">Edit information</p>
+			<div class="header-button">
+				<h1>Students</h1>
+				<button class="btn" id="addStudentBtn" style="padding: 12px;">+ Add student</button>
+			</div>
 
 			<div>
 				<table class="information-table">
@@ -39,19 +41,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- Example row -->
-						<tr>
-							<td>1</td>
-							<td>John</td>
-							<td>Doe</td>
-							<td>john@example.com</td>
-							<td>0123456789</td>
-							<td>101</td>
-							<td>
-								<button>Edit</button>
-								<button>Delete</button>
-							</td>
-						</tr>
+						<!-- To be populated by JavaScript -->
 					</tbody>
 				</table>
 			</div>
@@ -93,6 +83,64 @@
 					<button type="submit" class="btn">Add Student</button>
 				</div>
 			</form>
+		</div>
+	</div>
+
+	<!-- Edit Student Modal -->
+	<div id="editStudentModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Edit Student</h2>
+				<span class="close" id="editCloseBtn">&times;</span>
+			</div>
+			<form id="editStudentForm" class="modal-body">
+				<input type="hidden" id="editStudentId" name="studentId">
+				<div class="form-group">
+					<label for="editFirstName">First Name:</label>
+					<input type="text" id="editFirstName" name="firstName" required>
+				</div>
+				<div class="form-group">
+					<label for="editLastName">Last Name:</label>
+					<input type="text" id="editLastName" name="lastName" required>
+				</div>
+				<div class="form-group">
+					<label for="editEmail">Email:</label>
+					<input type="email" id="editEmail" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="editPhone">Phone:</label>
+					<input type="tel" id="editPhone" name="phone" required>
+				</div>
+				<div class="form-group">
+					<label for="editClassId">Class:</label>
+					<select id="editClassId" name="classId">
+						<option value="">-- Select a Class --</option>
+					</select>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="editCancelBtn" class="btn-secondary">Cancel</button>
+					<button type="submit" class="btn">Update Student</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Delete Student Modal -->
+	<div id="deleteStudentModal" class="modal">
+		<div class="modal-content" style="max-width: 400px;">
+			<div class="modal-header">
+				<h2>Delete Student</h2>
+				<span class="close" id="deleteCloseBtn">&times;</span>
+			</div>
+			<div class="modal-body">
+				<p style="margin-bottom: 8px">Are you sure you want to delete this student?</p>
+				<p><strong>ID:</strong> <span id="deleteStudentId"></span></p>
+				<p><strong>Name:</strong> <span id="deleteStudentName"></span></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="deleteCancelBtn" class="btn-secondary">Cancel</button>
+				<button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+			</div>
 		</div>
 	</div>
 
