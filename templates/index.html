@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>School Database System</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+	<div class="app">
+		<div class="sidebar">
+			<h2>School DB</h2>
+			<nav>
+				<a href="" data-page="students">Students</a>
+				<a href="" data-page="teachers">Teachers</a>
+				<a href="" data-page="classes">Classes</a>
+				<a href="" data-page="subjects">Subjects</a>
+				<a href="" data-page="enrollments">Enrollments</a>
+			</nav>
+		</div>
+
+		<div class="main-content">
+			<!-- Pages -->
+		</div>
+	</div>
+
+	<script src="{{ url_for('static', filename='js/students.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}" async defer></script>
+</body>
+
+</html>

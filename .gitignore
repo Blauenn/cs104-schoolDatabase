@@ -1,2 +1,4 @@
 .DS_Store
-school.db
+__pycache__/
+*.py[cod]
+database.db
