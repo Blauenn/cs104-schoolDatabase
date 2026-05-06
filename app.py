@@ -4,9 +4,8 @@ import os
 
 app = Flask(__name__)
 
-# Database configuration - use absolute path for PythonAnywhere
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.path.join(BASE_DIR, 'school.db')
+# Database configuration
+DATABASE = 'school.db'
 
 def get_db():
     """Get database connection"""
@@ -79,9 +78,9 @@ def init_db():
         
         conn.commit()
         conn.close()
-
-# Initialize database when app starts (before first request)
-init_db()
+        print("Database initialized successfully!")
+    else:
+        print("Database already exists.")
 
 @app.route('/')
 def home():
@@ -473,4 +472,5 @@ def delete_enrollment(enrollment_id):
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5001)
+    init_db()
+    app.run(debug=True)
