@@ -24,9 +24,9 @@ def create_student():
             (
                 data.get("first_name"),
                 data.get("last_name"),
-                data.get("first_name"),
-                data.get("first_name"),
-                data.get("first_name"),
+                data.get("email"),
+                data.get("phone"),
+                data.get("class_id"),
             ),
         )
         conn.commit()
@@ -34,3 +34,28 @@ def create_student():
         return jsonify({"message": "Student created"}), 201
     except sqlite3.Error as e:
         return jsonify({"error": str(e)}), 400
+
+
+@bp_students.route("/students/<int:id>", methods=["PATCH"])
+def update_student(id):
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    fields = ", ".join(f"{k} = ?" for k in data.keys())
+    values = list(data.values()) + [id]
+
+    conn = get_db_connection()
+    conn.execute(f"UPDATE students SET {fields} WHERE student_id = ?", values)
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Student updated"}), 200
+
+
+@bp_students.route("/students/<int:id>", methods=["DELETE"])
+def delete_student(id):
+    conn = get_db_connection()
+    conn.execute("DELETE FROM students WHERE student_id = ?", [id])
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Student deleted"}), 200

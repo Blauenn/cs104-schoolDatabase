@@ -1,7 +1,7 @@
 <div style="display: flex; flex-direction: column; gap: 8vh">
 	<div style="display: flex; justify-content: space-between;">
 		<h1>Students</h1>
-		<button>Add student</button>
+		<button onclick="openAddStudent()">Add Student</button>
 	</div>
 	<div>
 		<table id="students-table">
@@ -13,11 +13,93 @@
 					<th>Email</th>
 					<th>Phone</th>
 					<th>Class</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
-			<tbody id="students-tbody">
-				
-			</tbody>
+			<tbody id="students-tbody"></tbody>
 		</table>
 	</div>
+
+	<!-- Add Modal -->
+	<div id="add-student-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Add Student</h2>
+			<form class="form" id="add-student-form">
+				<div class="form-group">
+					<label>First Name</label>
+					<input type="text" id="add-first-name">
+				</div>
+				<div class="form-group">
+					<label>Last Name</label>
+					<input type="text" id="add-last-name">
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" id="add-email">
+				</div>
+				<div class="form-group">
+					<label>Phone</label>
+					<input type="text" id="add-phone">
+				</div>
+				<div class="form-group">
+					<label>Class</label>
+					<select id="add-class-id"></select>
+				</div>
+				<div class="modal-actions">
+					<button type="button" onclick="closeAddModal()">Cancel</button>
+					<button type="submit">Add Student</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Edit Modal -->
+	<div id="edit-student-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Edit Student</h2>
+			<form class="form" id="edit-student-form">
+				<input type="hidden" id="edit-student-id">
+				<div class="form-group">
+					<label>First Name</label>
+					<input type="text" id="edit-first-name">
+				</div>
+				<div class="form-group">
+					<label>Last Name</label>
+					<input type="text" id="edit-last-name">
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" id="edit-email">
+				</div>
+				<div class="form-group">
+					<label>Phone</label>
+					<input type="text" id="edit-phone">
+				</div>
+				<div class="form-group">
+					<label>Class ID</label>
+					<select id="edit-class-id"></select>
+				</div>
+				<div class="modal-actions">
+					<button type="button" onclick="closeEditModal()">Cancel</button>
+					<button type="submit">Save Changes</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Delete Modal -->
+	<div id="delete-student-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Delete Student</h2>
+			<p>Are you sure you want to delete <strong id="delete-student-name"></strong>?</p>
+			<div class="modal-actions">
+				<button onclick="closeDeleteModal()">Cancel</button>
+				<button id="confirm-delete-btn" class="btn-danger">Delete</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Toast -->
+	<div id="toast"></div>
+
 </div>
