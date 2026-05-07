@@ -28,3 +28,28 @@ def create_class():
         return jsonify({"message": "Class created"}), 201
     except sqlite3.Error as e:
         return jsonify({"error": str(e)}), 400
+
+
+@bp_classes.route("/classes/<int:id>", methods=["PATCH"])
+def update_class(id):
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    fields = ", ".join(f"{k} = ?" for k in data.keys())
+    values = list(data.values()) + [id]
+
+    conn = get_db_connection()
+    conn.execute(f"UPDATE classes SET {fields} WHERE class_id = ?", values)
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Class updated"}), 200
+
+
+@bp_classes.route("/classes/<int:id>", methods=["DELETE"])
+def delete_class(id):
+    conn = get_db_connection()
+    conn.execute("DELETE FROM classes WHERE class_id = ?", [id])
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Class deleted"}), 200

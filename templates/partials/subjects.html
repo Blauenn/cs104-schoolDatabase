@@ -1,0 +1,85 @@
+<div style="display: flex; flex-direction: column; gap: 8vh">
+	<div style="display: flex; justify-content: space-between;">
+		<h1>Subjects</h1>
+		<button onclick="openAddSubject()">Add Subject</button>
+	</div>
+	<div>
+		<table id="subjects-table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Subject Code</th>
+					<th>Subject Name</th>
+					<th>Teacher</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody id="subjects-tbody"></tbody>
+		</table>
+	</div>
+
+	<!-- Add Modal -->
+	<div id="add-subject-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Add Subject</h2>
+			<form class="form" id="add-subject-form">
+				<div class="form-group">
+					<label>Subject Code</label>
+					<input type="text" id="add-subject-code">
+				</div>
+				<div class="form-group">
+					<label>Subject Name</label>
+					<input type="text" id="add-subject-name">
+				</div>
+				<div class="form-group">
+					<label>Teacher</label>
+					<select id="add-subject-teacher-id"></select>
+				</div>
+				<div class="modal-actions">
+					<button type="button" onclick="closeAddSubjectModal()">Cancel</button>
+					<button type="submit">Add Subject</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Edit Modal -->
+	<div id="edit-subject-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Edit Subject</h2>
+			<form class="form" id="edit-subject-form">
+				<input type="hidden" id="edit-subject-id">
+				<div class="form-group">
+					<label>Subject Code</label>
+					<input type="text" id="edit-subject-code">
+				</div>
+				<div class="form-group">
+					<label>Subject Name</label>
+					<input type="text" id="edit-subject-name">
+				</div>
+				<div class="form-group">
+					<label>Teacher</label>
+					<select id="edit-subject-teacher-id"></select>
+				</div>
+				<div class="modal-actions">
+					<button type="button" onclick="closeEditSubjectModal()">Cancel</button>
+					<button type="submit">Save Changes</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Delete Modal -->
+	<div id="delete-subject-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Delete Subject</h2>
+			<p>Are you sure you want to delete <strong id="delete-subject-name"></strong>?</p>
+			<div class="modal-actions">
+				<button onclick="closeDeleteSubjectModal()">Cancel</button>
+				<button id="confirm-delete-subject-btn" class="btn-danger">Delete</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="toast"></div>
+</div>

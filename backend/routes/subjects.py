@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
 import sqlite3
-
 from backend.database import get_db_connection
 
 bp_subjects = Blueprint("subjects", __name__)
@@ -32,3 +31,28 @@ def create_subject():
         return jsonify({"message": "Subject created"}), 201
     except sqlite3.Error as e:
         return jsonify({"error": str(e)}), 400
+
+
+@bp_subjects.route("/subjects/<int:id>", methods=["PATCH"])
+def update_subject(id):
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    fields = ", ".join(f"{k} = ?" for k in data.keys())
+    values = list(data.values()) + [id]
+
+    conn = get_db_connection()
+    conn.execute(f"UPDATE subjects SET {fields} WHERE subject_id = ?", values)
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Subject updated"}), 200
+
+
+@bp_subjects.route("/subjects/<int:id>", methods=["DELETE"])
+def delete_subject(id):
+    conn = get_db_connection()
+    conn.execute("DELETE FROM subjects WHERE subject_id = ?", [id])
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Subject deleted"}), 200

@@ -1,0 +1,76 @@
+<div style="display: flex; flex-direction: column; gap: 8vh">
+	<div style="display: flex; justify-content: space-between;">
+		<h1>Classes</h1>
+		<button onclick="openAddClass()">Add Class</button>
+	</div>
+	<div>
+		<table id="classes-table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Class Name</th>
+					<th>Homeroom teacher</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody id="classes-tbody"></tbody>
+		</table>
+	</div>
+
+	<!-- Add Modal -->
+	<div id="add-class-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Add Class</h2>
+			<form class="form" id="add-class-form">
+				<div class="form-group">
+					<label>Class Name</label>
+					<input type="text" id="add-class-name">
+				</div>
+				<div class="form-group">
+					<label>Teacher</label>
+					<select id="add-class-teacher-id"></select>
+				</div>
+				<div class="modal-actions">
+					<button type="button" onclick="closeAddClassModal()">Cancel</button>
+					<button type="submit">Add Class</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Edit Modal -->
+	<div id="edit-class-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Edit Class</h2>
+			<form class="form" id="edit-class-form">
+				<input type="hidden" id="edit-class-id">
+				<div class="form-group">
+					<label>Class Name</label>
+					<input type="text" id="edit-class-name">
+				</div>
+				<div class="form-group">
+					<label>Teacher</label>
+					<select id="edit-class-teacher-id"></select>
+				</div>
+				<div class="modal-actions">
+					<button type="button" onclick="closeEditClassModal()">Cancel</button>
+					<button type="submit">Save Changes</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Delete Modal -->
+	<div id="delete-class-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Delete Class</h2>
+			<p>Are you sure you want to delete <strong id="delete-class-name"></strong>?</p>
+			<div class="modal-actions">
+				<button onclick="closeDeleteClassModal()">Cancel</button>
+				<button id="confirm-delete-class-btn" class="btn-danger">Delete</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="toast"></div>
+</div>

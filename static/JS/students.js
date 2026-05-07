@@ -1,6 +1,14 @@
 async function initStudents() {
-	const response = await fetch('/students');
-	const students = await response.json();
+	const [studentsRes, classesRes] = await Promise.all([
+		fetch('/students'),
+		fetch('/classes')
+	]);
+
+	const students = await studentsRes.json();
+	const classes = await classesRes.json();
+
+	const classMap = {};
+	classes.forEach(c => classMap[c.class_id] = c.class_name)
 
 	const tbody = document.getElementById('students-tbody');
 	tbody.innerHTML = '';
@@ -9,14 +17,14 @@ async function initStudents() {
 		tbody.innerHTML += `
             <tr>
                 <td>${s.student_id}</td>
+                <td>${classMap[s.student_class_id] || s.student_class_id}</td>
                 <td>${s.student_first_name}</td>
                 <td>${s.student_last_name}</td>
                 <td>${s.student_email}</td>
                 <td>${s.student_phone}</td>
-                <td>${s.student_class_id}</td>
                 <td>
                   <button onclick="openEditStudent(${s.student_id}, '${s.student_first_name}', '${s.student_last_name}', '${s.student_email}', '${s.student_phone}', ${s.student_class_id})">Edit</button>
-                  <button onclick="openDeleteStudent(${s.student_id}, '${s.student_first_name} ${s.student_last_name}')">Delete</button>
+                  <button onclick="openDeleteStudent(${s.student_id}, '${s.student_first_name} ${s.student_last_name}')" class="btn-danger">Delete</button>
                 </td>
             </tr>
         `;

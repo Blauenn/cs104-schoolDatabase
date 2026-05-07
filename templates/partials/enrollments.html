@@ -1,0 +1,55 @@
+<div style="display: flex; flex-direction: column; gap: 8vh">
+	<div style="display: flex; justify-content: space-between;">
+		<h1>Enrollments</h1>
+		<button onclick="openAddEnrollment()">Add Enrollment</button>
+	</div>
+	<div>
+		<table id="enrollments-table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Student</th>
+					<th>Subject code</th>
+					<th>Subject name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody id="enrollments-tbody"></tbody>
+		</table>
+	</div>
+
+	<!-- Add Modal -->
+	<div id="add-enrollment-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Add Enrollment</h2>
+			<form class="form" id="add-enrollment-form">
+				<div class="form-group">
+					<label>Student</label>
+					<select id="add-enrollment-student-id"></select>
+				</div>
+				<div class="form-group">
+					<label>Subject</label>
+					<select id="add-enrollment-subject-id"></select>
+				</div>
+				<div class="modal-actions">
+					<button type="button" onclick="closeAddEnrollmentModal()">Cancel</button>
+					<button type="submit">Add Enrollment</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Delete Modal -->
+	<div id="delete-enrollment-modal" class="modal-overlay">
+		<div class="modal-box">
+			<h2>Delete Enrollment</h2>
+			<p>Are you sure you want to delete enrollment for <strong id="delete-enrollment-name"></strong>?</p>
+			<div class="modal-actions">
+				<button onclick="closeDeleteEnrollmentModal()">Cancel</button>
+				<button id="confirm-delete-enrollment-btn" class="btn-danger">Delete</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="toast"></div>
+</div>

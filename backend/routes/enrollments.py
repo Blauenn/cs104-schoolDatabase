@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
 import sqlite3
-
 from backend.database import get_db_connection
 
 bp_enrollments = Blueprint("enrollments", __name__)
@@ -30,3 +29,17 @@ def create_enrollment():
         return jsonify({"error": "Student is already enrolled in this subject"}), 409
     except sqlite3.Error as e:
         return jsonify({"error": str(e)}), 400
+
+
+@bp_enrollments.route(
+    "/enrollments/<int:student_id>/<int:subject_id>", methods=["DELETE"]
+)
+def delete_enrollment(student_id, subject_id):
+    conn = get_db_connection()
+    conn.execute(
+        "DELETE FROM enrollments WHERE enrollment_student_id = ? AND enrollment_subject_id = ?",
+        [student_id, subject_id],
+    )
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Enrollment deleted"}), 200
