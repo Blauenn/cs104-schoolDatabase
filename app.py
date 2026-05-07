@@ -21,7 +21,7 @@ app.register_blueprint(bp_classes)
 app.register_blueprint(bp_subjects)
 app.register_blueprint(bp_enrollments)
 
+init_db()
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
