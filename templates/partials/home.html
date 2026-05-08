@@ -1,4 +1,47 @@
-<div>
-    <h1>Welcome to School DB</h1>
-    <p>Select a section from the sidebar to get started.</p>
+<div style="display: flex; flex-direction: column; gap: 32px">
+	<div>
+		<h1>Welcome to School DB</h1>
+		<p>School information management system</p>
+	</div>
+
+	<div>
+		<h2 style="margin-bottom: 2vh;">Total entries:</h2>
+		<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+			<div class="summary-card" onclick="navigateTo('students')">
+				<h1 id="count-students">-</h1>
+				<p>Students</p>
+			</div>
+			<div class="summary-card" onclick="navigateTo('teachers')">
+				<h1 id="count-teachers">-</h1>
+				<p>Teachers</p>
+			</div>
+			<div class="summary-card" onclick="navigateTo('classes')">
+				<h1 id="count-classes">-</h1>
+				<p>Classes</p>
+			</div>
+			<div class="summary-card" onclick="navigateTo('subjects')">
+				<h1 id="count-subjects">-</h1>
+				<p>Subjects</p>
+			</div>
+			<div class="summary-card" onclick="navigateTo('enrollments')">
+				<h1 id="count-enrollments">-</h1>
+				<p>Enrollments</p>
+			</div>
+		</div>
+	</div>
+
+	<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+		<div>
+			<h2>Recent Students</h2>
+			<div id="recent-students" class="recent-list"></div>
+		</div>
+		<div>
+			<h2>Recent Teachers</h2>
+			<div id="recent-teachers" class="recent-list"></div>
+		</div>
+		<div>
+			<h2>Recent Enrollments</h2>
+			<div id="recent-enrollments" class="recent-list"></div>
+		</div>
+	</div>
 </div>

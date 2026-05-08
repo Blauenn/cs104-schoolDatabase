@@ -6,7 +6,7 @@ async function navigateTo(page) {
 	document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
 	document.querySelector(`[data-page="${page}"]`).classList.add('active');
 	
-	if (page === 'home') return;
+	if (page === 'home') initHome();
 	if (page === 'students') initStudents();
 	if (page === 'teachers') initTeachers();
 	if (page === 'classes') initClasses();
