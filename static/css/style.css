@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&display=swap');
 
+/* ================================
+   Reset
+================================ */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
+/* ================================
+   Variables
+================================ */
 :root {
 	--bg-primary: #202124;
 	--bg-secondary: #292a2d;
@@ -19,6 +25,9 @@
 	--border: #5f6368;
 }
 
+/* ================================
+   Base
+================================ */
 body {
 	font-family: 'Google Sans', sans-serif;
 	background-color: var(--bg-primary);
@@ -27,12 +36,47 @@ body {
 	display: flex;
 }
 
-.app {
-	display: flex;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 500;
+	color: var(--text-primary);
 }
 
+p {
+	color: var(--text-secondary);
+}
+
+a {
+	color: var(--accent-blue);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* ================================
+   Layout
+================================ */
+.app {
+	display: flex;
+	width: 100%;
+}
+
+.main-content {
+	flex: 1;
+	padding: 4vh;
+}
+
+/* ================================
+   Sidebar
+================================ */
 .sidebar {
-	width: 20vh;
+	width: 160px;
 	height: 100vh;
 	position: sticky;
 	top: 0;
@@ -40,14 +84,16 @@ body {
 	padding: 24px 16px;
 	display: flex;
 	flex-direction: column;
+	flex-shrink: 0;
 	gap: 24px;
 	border-right: 1px solid var(--border);
 }
 
-.sidebar h2 {
+.sidebar h2 a {
 	color: var(--accent-blue);
 	font-size: 18px;
 	padding: 0 8px;
+	text-decoration: none;
 }
 
 .sidebar nav {
@@ -74,45 +120,16 @@ body {
 	color: var(--accent-blue);
 }
 
-.main-content {
-	flex: 1;
-	padding: 4vh;
-}
-
-.page {
-	display: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 500;
-	color: var(--text-primary);
-}
-
-p {
-	color: var(--text-secondary);
-}
-
-a {
-	color: var(--accent-blue);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
+/* ================================
+   Forms
+================================ */
 button {
 	background-color: var(--accent-blue);
 	color: var(--bg-primary);
 	border: none;
 	padding: 8px 20px;
 	border-radius: 4px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Google Sans', sans-serif;
 	font-size: 14px;
 	font-weight: 500;
 	cursor: pointer;
@@ -130,7 +147,7 @@ textarea {
 	border: 1px solid var(--border);
 	border-radius: 4px;
 	padding: 8px 12px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Google Sans', sans-serif;
 	font-size: 14px;
 	width: 100%;
 }
@@ -142,6 +159,33 @@ textarea:focus {
 	border-color: var(--accent-blue);
 }
 
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 14px;
+	color: var(--text-secondary);
+}
+
+.btn-danger {
+	background-color: var(--accent-red);
+}
+
+.btn-secondary {
+	background-color: var(--bg-surface);
+	color: var(--text-primary);
+	border: 1px solid var(--border);
+}
+
+/* ================================
+   Table
+================================ */
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -165,6 +209,66 @@ tr:hover {
 	background-color: var(--bg-surface);
 }
 
+/* ================================
+   Modal
+================================ */
+.modal-overlay {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+}
+
+.modal-box {
+	background: var(--bg-secondary);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 32px;
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.modal-box h2 {
+	font-size: 18px;
+}
+
+.modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+/* ================================
+   Toast
+================================ */
+#toast {
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+	background: var(--bg-surface);
+	color: var(--text-primary);
+	border: 1px solid var(--border);
+	padding: 12px 20px;
+	border-radius: 6px;
+	font-size: 14px;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: 200;
+}
+
+#toast.show {
+	opacity: 1;
+}
+
+/* ================================
+   Dashboard - Summary Cards
+================================ */
 .summary-card {
 	background-color: var(--bg-secondary);
 	border: 1px solid var(--border);
@@ -195,6 +299,9 @@ tr:hover {
 	color: var(--accent-blue);
 }
 
+/* ================================
+   Dashboard - Recent Lists
+================================ */
 .recent-list {
 	display: flex;
 	flex-direction: column;
@@ -203,14 +310,33 @@ tr:hover {
 
 .recent-item {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	gap: 16px;
 	padding: 12px 0;
 	border-bottom: 1px solid var(--border);
-	gap: 4px;
+	align-items: stretch;
 }
 
 .recent-item:last-child {
 	border-bottom: none;
+}
+
+.recent-item>div {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	justify-content: center;
+}
+
+.recent-index {
+	color: var(--text-secondary);
+	font-size: 16px;
+	width: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-right: 1px solid var(--border);
+	padding-right: 16px;
 }
 
 .recent-name {
@@ -221,73 +347,4 @@ tr:hover {
 .recent-detail {
 	color: var(--text-secondary);
 	font-size: 13px;
-}
-
-.modal-overlay {
-	display: none;
-	position: fixed;
-	inset: 0;
-	background: rgba(0, 0, 0, 0.6);
-	justify-content: center;
-	align-items: center;
-	z-index: 100;
-}
-
-.modal-box {
-	background: var(--bg-secondary);
-	border: 1px solid var(--border);
-	border-radius: 8px;
-	padding: 32px;
-	width: 400px;
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-}
-
-.modal-box h2 {
-	font-size: 18px;
-}
-
-.form {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-}
-
-.form-group {
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-	font-size: 14px;
-	color: var(--text-secondary);
-}
-
-.modal-actions {
-	display: flex;
-	justify-content: flex-end;
-	gap: 8px;
-	margin-top: 8px;
-}
-
-.btn-danger {
-	background-color: var(--accent-red);
-}
-
-#toast {
-	position: fixed;
-	bottom: 32px;
-	right: 32px;
-	background: var(--bg-surface);
-	color: var(--text-primary);
-	border: 1px solid var(--border);
-	padding: 12px 20px;
-	border-radius: 6px;
-	font-size: 14px;
-	opacity: 0;
-	transition: opacity 0.3s ease;
-	z-index: 200;
-}
-
-#toast.show {
-	opacity: 1;
 }

@@ -8,7 +8,7 @@ async function initStudents() {
 	const classes = await classesRes.json();
 
 	const classMap = {};
-	classes.forEach(c => classMap[c.class_id] = c.class_name)
+	classes.forEach(c => classMap[c.class_id] = c.class_name);
 
 	const tbody = document.getElementById('students-tbody');
 	tbody.innerHTML = '';
@@ -23,9 +23,11 @@ async function initStudents() {
                 <td>${s.student_email}</td>
                 <td>${s.student_phone}</td>
                 <td>
-                  <button onclick="openEditStudent(${s.student_id}, '${s.student_first_name}', '${s.student_last_name}', '${s.student_email}', '${s.student_phone}', ${s.student_class_id})">Edit</button>
-                  <button onclick="openDeleteStudent(${s.student_id}, '${s.student_first_name} ${s.student_last_name}')" class="btn-danger">Delete</button>
-                </td>
+									<div style="display: flex; gap: 8px; align-items: center;">
+										<button onclick="openEditStudent(${s.student_id}, '${s.student_first_name}', '${s.student_last_name}', '${s.student_email}', '${s.student_phone}', ${s.student_class_id})">Edit</button>
+										<button onclick="openDeleteStudent(${s.student_id}, '${s.student_first_name} ${s.student_last_name}')" class="btn-danger">Delete</button>
+									</div>
+								</td>
             </tr>
         `;
 	});

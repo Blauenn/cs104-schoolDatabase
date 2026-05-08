@@ -21,8 +21,10 @@ async function initSubjects() {
                 <td>${s.subject_name}</td>
                 <td>${teacherMap[s.subject_teacher_id] || s.subject_teacher_id}</td>
                 <td>
+									<div style="display: flex; gap: 8px; align-items: center;">
                     <button onclick="openEditSubject(${s.subject_id}, '${s.subject_code}', '${s.subject_name}', ${s.subject_teacher_id})">Edit</button>
                     <button onclick="openDeleteSubject(${s.subject_id}, '${s.subject_name}')" class="btn-danger">Delete</button>
+									</div>
                 </td>
             </tr>
         `;

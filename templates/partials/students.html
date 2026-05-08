@@ -26,6 +26,10 @@
 			<h2>Add Student</h2>
 			<form class="form" id="add-student-form">
 				<div class="form-group">
+					<label>Class</label>
+					<select id="add-class-id"></select>
+				</div>
+				<div class="form-group">
 					<label>First Name</label>
 					<input type="text" id="add-first-name">
 				</div>
@@ -40,10 +44,6 @@
 				<div class="form-group">
 					<label>Phone</label>
 					<input type="text" id="add-phone">
-				</div>
-				<div class="form-group">
-					<label>Class</label>
-					<select id="add-class-id"></select>
 				</div>
 				<div class="modal-actions">
 					<button type="button" onclick="closeAddModal()">Cancel</button>
@@ -60,6 +60,10 @@
 			<form class="form" id="edit-student-form">
 				<input type="hidden" id="edit-student-id">
 				<div class="form-group">
+					<label>Class</label>
+					<select id="edit-class-id"></select>
+				</div>
+				<div class="form-group">
 					<label>First Name</label>
 					<input type="text" id="edit-first-name">
 				</div>
@@ -74,10 +78,6 @@
 				<div class="form-group">
 					<label>Phone</label>
 					<input type="text" id="edit-phone">
-				</div>
-				<div class="form-group">
-					<label>Class ID</label>
-					<select id="edit-class-id"></select>
 				</div>
 				<div class="modal-actions">
 					<button type="button" onclick="closeEditModal()">Cancel</button>

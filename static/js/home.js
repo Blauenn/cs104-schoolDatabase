@@ -43,11 +43,14 @@ async function initHome() {
 	studentsList.innerHTML = '';
 	recentStudents.forEach(s => {
 		studentsList.innerHTML += `
-            <div class="recent-item">
+        <div class="recent-item">
+            <span class="recent-index">#${s.student_id}</span>
+            <div>
                 <span class="recent-name">${s.student_first_name} ${s.student_last_name}</span>
                 <span class="recent-detail">${classMap[s.student_class_id] || '-'} · ${s.student_email}</span>
             </div>
-        `;
+        </div>
+    `;
 	});
 
 	// recent teachers (last 5)
@@ -57,11 +60,14 @@ async function initHome() {
 	recentTeachers.forEach(t => {
 		const codes = teacherSubjectsMap[t.teacher_id] || [];
 		teachersList.innerHTML += `
-            <div class="recent-item">
+        <div class="recent-item">
+            <span class="recent-index">#${t.teacher_id}</span>
+            <div>
                 <span class="recent-name">${t.teacher_first_name} ${t.teacher_last_name}</span>
                 <span class="recent-detail">${t.teacher_email} · ${codes.length ? codes.join(', ') : 'No subjects'}</span>
             </div>
-        `;
+        </div>
+    `;
 	});
 
 	// recent enrollments (last 5)
@@ -71,10 +77,13 @@ async function initHome() {
 	recentEnrollments.forEach(e => {
 		const subject = subjectMap[e.enrollment_subject_id] || {};
 		enrollmentsList.innerHTML += `
-            <div class="recent-item">
+        <div class="recent-item">
+            <span class="recent-index">#${e.enrollment_student_id}</span>
+            <div>
                 <span class="recent-name">${studentMap[e.enrollment_student_id] || '-'}</span>
                 <span class="recent-detail">${subject.code || '-'} · ${subject.name || '-'}</span>
             </div>
-        `;
+        </div>
+    `;
 	});
 }

@@ -20,8 +20,10 @@ async function initClasses() {
                 <td>${c.class_name}</td>
                 <td>${teacherMap[c.class_teacher_id] || c.class_teacher_id}</td>
                 <td>
+									<div style="display: flex; gap: 8px; align-items: center;">
                     <button onclick="openEditClass(${c.class_id}, '${c.class_name}', ${c.class_teacher_id})">Edit</button>
                     <button onclick="openDeleteClass(${c.class_id}, '${c.class_name}')" class="btn-danger">Delete</button>
+									</div>
                 </td>
             </tr>
         `;

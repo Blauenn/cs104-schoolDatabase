@@ -14,8 +14,10 @@ async function initTeachers() {
                 <td>${t.teacher_email}</td>
                 <td>${t.teacher_phone}</td>
                 <td>
+									<div style="display: flex; gap: 8px; align-items: center;">
                     <button onclick="openEditTeacher(${t.teacher_id}, '${t.teacher_first_name}', '${t.teacher_last_name}', '${t.teacher_email}', '${t.teacher_phone}')">Edit</button>
                     <button onclick="openDeleteTeacher(${t.teacher_id}, '${t.teacher_first_name} ${t.teacher_last_name}')" class="btn-danger">Delete</button>
+									</div>
                 </td>
             </tr>
         `;
